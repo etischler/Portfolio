@@ -1,3 +1,3 @@
 # Portfolio
 
-Each branch is a seperate assignment completed during school or outside pursuits. Removed upon request.
+Contains sample work. 
