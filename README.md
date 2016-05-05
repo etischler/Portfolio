@@ -1,3 +1,1 @@
-# Portfolio
-
-Contains sample work. 
+This is a public Repo of some of my work that I have completed at UF. Each branch contains a different project that I have worked on during my pursuit of a Bachelor of Science Degree in Computer Science from the University of Florida.
