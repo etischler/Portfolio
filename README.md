@@ -1,1 +1,1 @@
-This is a public Repo of some of my work that I have completed at UF. Each branch contains a different project that I have worked on during my pursuit of a Bachelor of Science Degree in Computer Science from the University of Florida.
+This project was to create a bTree given a specific set of specifications. Using online resources and learning from other code bases online I was able to create this bTree. This project was written in C++. This was for Professor Richard Newman in his data structures and algorithms class.
