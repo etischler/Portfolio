@@ -1,1 +1,1 @@
-This is a public Repo of some of my work that I have completed at UF. Each branch contains a different project that I have worked on during my pursuit of a Bachelor of Science Degree in Computer Science from the University of Florida.
+This is the first assignment I had for my Networks class with Jonathon Liu. It shows an example of a server client program written in Java. Given requests by the client to do specific math operations, the server gives the correct reply.
