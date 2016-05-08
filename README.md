@@ -1,1 +1,1 @@
-This is a public Repo of some of my work that I have completed at UF. Each branch contains a different project that I have worked on during my pursuit of a Bachelor of Science Degree in Computer Science from the University of Florida.
+This is the second assignment for my Networks Class. It shows an implementation of an rdt 2.1 protocol for a self created lossy channel. It uses threading for multiple connections and gracefully terminates. The self created lossy channel has a 25% loss, 25% corrupt, and a 50% pass rate.
