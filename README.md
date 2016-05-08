@@ -1,1 +1,1 @@
-This is a public Repo of some of my work that I have completed at UF. Each branch contains a different project that I have worked on during my pursuit of a Bachelor of Science Degree in Computer Science from the University of Florida.
+This is the third and last assignment for my networks class. It is an implementation of a linkstate algorithm used to determine the shortest path for packets, etc. Formatting works well for small networks sizes (n<7). Very specific input required based on assignment specifications. Dijkstra's algorithm is implemented here as well.
