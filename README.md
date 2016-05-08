@@ -1,1 +1,1 @@
-This is a public Repo of some of my work that I have completed at UF. Each branch contains a different project that I have worked on during my pursuit of a Bachelor of Science Degree in Computer Science from the University of Florida.
+This is the last part of the term project. We implemented simplified named semaphores in OpenBSD OS. 2 week long project.

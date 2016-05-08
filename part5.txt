@@ -1,0 +1,240 @@
+Script started on Fri Nov 27 12:11:58 2015
+# sh
+# 
+# 
+# 
+# cd /usr/src/sys/kern
+# ls  
+# 
+# 
+# ls -lt | head
+total 3084
+-rw-r--r--  1 root  wsrc  14597 Dec  1 12:51 cop4600.c
+-rw-r--r--  1 root  wsrc  16133 Nov 29 18:38 init_main.c
+-rw-r--r--  1 root  wsrc  11149 Nov 29 18:38 kern_fork.c
+-rw-r--r--  1 root  wsrc  52112 Nov 29 16:57 vfs_subr.c
+-rw-r--r--  1 root  wsrc  11616 Nov 29 16:27 kern_proc.c
+-rw-r--r--  1 root  wsrc  26582 Nov 26 21:07 init_sysent.c
+-rw-r--r--  1 root  wsrc  15675 Nov 26 21:07 syscalls.c
+-rw-r--r--  1 root  wsrc  14138 Nov 26 14:52 kern_exit.c
+-rw-r--r--  1 root  wsrc  22359 Nov 25 23:01 syscalls.master
+# 
+# 
+# 
+# tail syscalls.master
+;==========================================================================
+
+;added by Dave Small
+289     STD             { int sys_hello( void ); }
+290     STD             { int sys_showargs( const char *str, int val ); }
+; added by Edward Tischler (Part 5 only)
+291 STD         { int sys_allocate_semaphore( const char* name, int initial_count ); }
+292 STD         { int sys_down_semaphore( const char* name ); }
+293 STD         { int sys_up_semaphore( const char* name );}
+294 STD         { int sys_free_semaphore( const char* name );}# 
+# 
+# 
+# grep semaphore *
+cop4600.c:  /*pool_init(&sema_pool, sizeof(struct cop4600_sema), 0, 0, 0, "cop4600semapl", //this will create the pool to hold the structs for semaphores
+cop4600.c:  q holding semaphores belonging to this process
+cop4600.c:  /*pool_init(&pes_pool, sizeof(struct cop4600_pes), 0, 0, 0, "cop4600pespl",  //this will create the pool to hold the structs for semaphores
+cop4600.c:            //uprintf("processes being removed from wait queue when semaphore freed from proc exit\n");
+cop4600.c:    //uprintf("semaphore freed from a process upon process exit \n");
+cop4600.c:int sys_allocate_semaphore(struct proc *p, void *v, register_t *retval) {
+cop4600.c:  struct sys_allocate_semaphore_args *uap = v;
+cop4600.c://check to see if there is already a semaphore with that name
+cop4600.c:  //uprintf("semaphore created in a process \n");
+cop4600.c:int sys_down_semaphore(struct proc *p, void *v, register_t *retval) {
+cop4600.c:int foundsemaphore = 0;
+cop4600.c:struct sys_allocate_semaphore_args *uap = v;
+cop4600.c://first begin with seeing if the semaphore exists
+cop4600.c:        foundsemaphore = 1;
+cop4600.c:        //uprintf("new semaphore count: %i \n", np->count);
+cop4600.c:          //uprintf("name of semaphore going to sleep: %s\n", np->name);
+cop4600.c:    if(foundsemaphore == 0){
+cop4600.c:  if(foundsemaphore == 0){
+cop4600.c:    //uprintf("semaphore not found for down\n");
+cop4600.c:int sys_up_semaphore(struct proc *p, void *v, register_t *retval) {
+cop4600.c:int foundsemaphore = 0;
+cop4600.c:struct sys_allocate_semaphore_args *uap = v;
+cop4600.c://first begin with seeing if the semaphore exists
+cop4600.c:        foundsemaphore = 1;
+cop4600.c:        //uprintf("new semaphore count: %i \n", np->count);
+cop4600.c:    if(foundsemaphore == 0){
+cop4600.c:  if(foundsemaphore == 0){
+cop4600.c:    //uprintf("semaphore not found in up\n");
+cop4600.c:int sys_free_semaphore(struct proc *p, void *v, register_t *retval) {
+cop4600.c:int foundsemaphore = 0;
+cop4600.c:struct sys_allocate_semaphore_args *uap = v;
+cop4600.c://first begin with seeing if the semaphore exists
+cop4600.c:        foundsemaphore = 1;
+cop4600.c:          //uprintf("processes being removed from wait queue when semaphore freed\n");
+cop4600.c:    if(foundsemaphore == 0){
+cop4600.c:      if(foundsemaphore == 1){
+cop4600.c:       // //uprintf("semaphore freed count should be 0\n");
+cop4600.c:////uprintf("number of semaphores after free: %i\n", i);
+cop4600.c:  if(foundsemaphore == 0){
+cop4600.c:    //uprintf("semaphore not found in free semaphore\n");
+init_main.c:    /* Initialize System V style semaphores. */
+init_sysent.c:  { 2, s(struct sys_allocate_semaphore_args),
+init_sysent.c:      sys_allocate_semaphore },           /* 291 = allocate_semaphore */
+init_sysent.c:  { 1, s(struct sys_down_semaphore_args),
+init_sysent.c:      sys_down_semaphore },               /* 292 = down_semaphore */
+init_sysent.c:  { 1, s(struct sys_up_semaphore_args),
+init_sysent.c:      sys_up_semaphore },                 /* 293 = up_semaphore */
+init_sysent.c:  { 1, s(struct sys_free_semaphore_args),
+init_sysent.c:      sys_free_semaphore },               /* 294 = free_semaphore */
+syscalls.c:     "allocate_semaphore",                   /* 291 = allocate_semaphore */
+syscalls.c:     "down_semaphore",                       /* 292 = down_semaphore */
+syscalls.c:     "up_semaphore",                 /* 293 = up_semaphore */
+syscalls.c:     "free_semaphore",                       /* 294 = free_semaphore */
+syscalls.master:291 STD         { int sys_allocate_semaphore( const char* name, int initial_count ); }
+syscalls.master:292 STD         { int sys_down_semaphore( const char* name ); }
+syscalls.master:293 STD         { int sys_up_semaphore( const char* name );}
+syscalls.master:294 STD         { int sys_free_semaphore( const char* name );}
+sysv_sem.c: * Implementation of SVID semaphores
+sysv_sem.c:struct       semid_ds **sema;        /* semaphore id list */
+sysv_sem.c:      * Preallocate space for the new semaphore.  If we are going
+sysv_sem.c:      * condition in allocating a semaphore with a specific key.
+sysv_sem.c:                     DPRINTF(("not enough semaphores left (need %d, got %d)\n",
+sysv_sem.c:              * Make sure that the semaphore still exists
+sysv_sem.c:              * The semaphore is still alive.  Readjust the count of
+sysv_sem.c:                      * rollback the semaphore ups and down so we can return
+sysv_sem.c:     /* Do a wakeup if any semaphore was up'd. */
+sysv_sem.c: * semaphores.
+# 
+# 
+# 
+# cd ../arch/i386/compiule   le/GENC ERIC
+# 
+# 
+# 
+# grep semaphore *
+Binary file cop4600.o matches
+Binary file init_sysent.o matches
+param.c: * Values in support of System V compatible semaphores.
+param.c:        SEMMNI,         /* # of semaphore identifiers */
+param.c:        SEMMNS,         /* # of semaphores in system */
+param.c:        SEMMSL,         /* max # of semaphores per id */
+param.c:        SEMVMX,         /* semaphore maximum value */
+# 
+# 
+# 
+# grep cop4600 MA akefile
+OBJS=   cop4600.o \
+CFILES= $S/kern/cop4600.c \
+# 
+# 
+# 
+# tail Makefile
+
+uscanner.o: $S/dev/usb/uscanner.c
+        ${NORMAL_C}
+
+usscanner.o: $S/dev/usb/usscanner.c
+        ${NORMAL_C}
+
+if_wi_usb.o: $S/dev/usb/if_wi_usb.c
+        ${NORMAL_C}
+
+# 
+# 
+# 
+# cd /root
+# 
+# 
+# 
+# ls -lt
+total 144
+-rw-r--r--  1 root  wheel  1491 Dec  1 13:10 firsttestfile.c
+-rw-r--r--  1 root  wheel  6689 Nov 27 12:13 part5.txt
+-rwxr-xr-x  1 root  wheel  7192 Nov 27 12:04 test
+drwx------  2 root  wheel   512 Nov 27 11:57 .vnc
+-rw-------  1 root  wheel   333 Nov 27 11:57 .Xauthority
+-rwxr-xr-x  1 root  wheel  7032 Nov 27 11:54 a.out
+-rw-r--r--  1 root  wheel   138 Nov 27 11:04 output.txt
+-rwxr-xr-x  1 root  wheel  6520 Nov 26 23:55 tesyt
+-rw-r--r--  1 root  wheel     0 Nov 25 19:02 firsttestfile.c~
+-rw-r--r--  1 root  wheel   676 Jun  9  2006 kerntest.c
+-rwxr-xr-x  1 root  wheel  6536 Jun  9  2006 kerntest
+drwx------  2 root  wheel   512 Jun  9  2006 .ssh
+-rwxr-xr-x  1 root  wheel    67 Jun  9  2006 vncup800
+-rwxr-xr-x  1 root  wheel    68 Jun  9  2006 vncup1024
+-rwxr-xr-x  1 root  wheel    69 Jun  9  2006 vncup1280
+-rw-r--r--  1 root  wheel   633 Jun  9  2006 .fonts.cache-1
+drwxr-xr-x  3 root  wheel   512 Jun  9  2006 .emacs.d
+-rw-r--r--  1 root  wheel   482 Jun  9  2006 .emacs
+-rw-r--r--  2 root  wheel   769 Jun  9  2006 .cshrc
+-rw-r--r--  2 root  wheel   267 Jun  9  2006 .profile
+-rw-------  1 root  wheel   125 Mar 29  2004 .klogin
+-rw-r--r--  1 root  wheel   335 Mar 29  2004 .login
+# 
+# 
+# 
+# gcc -o semtest f # gcc -o semtest firsttestfile.c                                               # gcc -o semtest firsttestfile.c 
+# 
+# 
+# 
+# ./semtest
+Starting 3 process test
+Testing up and down
+Semaphore allocated
+Parent downing semaphore
+Count still not negative downing again (should sleep)
+Child up-ing semaphore owned by parent
+Other child up-ing non existant semaphore
+process finished 1st test
+process finished 1st test
+process finished 1st test
+Starting free test(2nd test)
+Parent downing semaphore to sleep
+Process finished 2nd test
+Child freeing parent's semaphore
+Process finished 2nd test
+Process finished 2nd test
+Process Finished Test
+Process Finished Test
+Starting automatic destruction test (parent only)
+Allocating semaphore
+Results can't be seen but if there is no fault then semaphore destroyed
+Process Finished Test
+# 
+# 
+# 
+# ls -lt \ /
+total 20080
+drwx------   5 root  wheel      512 Nov 27 12:15 root
+drwxrwxrwt   4 root  wheel      512 Nov 27 12:14 tmp
+drwxr-xr-x   3 root  wheel    19968 Nov 27 11:57 dev
+-rwxr-xr-x   1 root  wsrc   5077491 Nov 27 11:46 bsd
+lrwxr-xr-x   1 root  wheel       16 Nov 27 07:09 shortcuttokern -> usr/src/sys/kern
+drwxr-xr-x  18 root  wheel     2048 May 20  2008 etc
+-rw-r--r--   2 root  wheel      769 Jun  9  2006 .cshrc
+-rw-r--r--   2 root  wheel      267 Jun  9  2006 .profile
+-rw-r--r--   1 root  wheel  5075323 Jul  7  2005 bsd.0
+-rw-r--r--   1 root  wheel    42132 Jul 18  2004 boot
+lrwxr-xr-x   1 root  wheel       11 Jul 18  2004 sys -> usr/src/sys
+drwxr-xr-x   2 root  wheel     2048 Mar 29  2004 sbin
+drwxr-xr-x   2 root  wheel     1024 Mar 29  2004 bin
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 altroot
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 home
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 mnt
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 stand
+drwxr-xr-x  22 root  wheel      512 May 16  2003 var
+drwxr-xr-x  16 root  wheel      512 May 16  2003 usr
+# 
+# 
+# 
+# dmesg | head
+2 head, 18 sec
+biomask 4a40 netmask 4e40 ttymask 5ec2
+pctr: 686-class user-level performance counters enabled
+mtrr: Pentium Pro MTRR support
+dkcsum: sd0 matched BIOS disk 80
+dkcsum: sd1 matched BIOS disk 81
+root on sd0a
+rootdev=0x400 rrootdev=0xd00 rawdev=0xd02
+WARNING: / was not properly unmounted
+syncing disks... done
+# # 
+Script done on Fri Nov 27 12:15:55 2015
