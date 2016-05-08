@@ -1,0 +1,155 @@
+Script started on Mon Nov 16 00:15:05 2015
+# sh
+# 
+# 
+# cd /usr/src/sys/kern
+# 
+# 
+# ls -lt | head
+total 3064
+-rw-r--r--  1 root  wsrc   5519 Nov 16 20:39 cop4600.c
+-rw-r--r--  1 root  wsrc  22162 Nov 15 22:57 syscalls.master
+-rw-r--r--  1 root  wsrc  26264 Nov 15 21:19 init_sysent.c
+-rw-r--r--  1 root  wsrc  15511 Nov 15 21:19 syscalls.c
+drwxr-xr-x  2 root  wsrc    512 Mar 29  2004 CVS
+-rw-r--r--  1 root  wsrc  13816 Mar 22  2004 kern_exit.c
+-rw-r--r--  1 root  wsrc  54036 Mar 19  2004 tty.c
+-rw-r--r--  1 root  wsrc  24343 Mar 19  2004 sysv_sem.c
+-rw-r--r--  1 root  wsrc  15550 Mar 15  2004 init_main.c
+# 
+# 
+# tail syscalls.master
+
+;==========================================================================
+; COP4600 syscalls
+;==========================================================================
+
+;added by Dave Small
+289     STD             { int sys_hello( void ); }
+290     STD             { int sys_showargs( const char *str, int val ); }
+;added by Edward Tischler
+291 STD     { int sys_cipher( char *text, int lkey, int nkey );}# 
+# 
+# grep coph   ipher *
+cop4600.c:sys_cipher( struct proc *p, void *v, register_t *retval )
+cop4600.c:struct sys_cipher_args *uap = v;
+init_sysent.c:  { 3, s(struct sys_cipher_args),
+init_sysent.c:      sys_cipher },                       /* 291 = cipher */
+syscalls.c:     "cipher",                       /* 291 = cipher */
+syscalls.master:291 STD     { int sys_cipher( char *text, int lkey, int nkey );}
+# 
+# 
+# cdd  /usr/src. /sys/arch/i386/compile/Generic      ENERIC
+# 
+# 
+# grep cipher *
+Binary file blf.o matches
+Binary file cop4600.o matches
+Binary file init_sysent.o matches
+# 
+# 
+# grep "cop4600" Makefile
+OBJS=   cop4600.o \
+CFILES= $S/kern/cop4600.c \
+# 
+# 
+# tail Makefile
+
+uscanner.o: $S/dev/usb/uscanner.c
+        ${NORMAL_C}
+
+usscanner.o: $S/dev/usb/usscanner.c
+        ${NORMAL_C}
+
+if_wi_usb.o: $S/dev/usb/if_wi_usb.c
+        ${NORMAL_C}
+
+# 
+# 
+# cd /root
+# 
+# 
+# gcc -o part4test par   # gcc -o part4test part4                                                       # gcc -o part4test part4 te       # gcc -o part4test part4test.c                                                  # gcc -o part4test part4test.c   
+# 
+# 
+# ls -  lt
+total 176
+-rw-r--r--  1 root  wheel  2418 Nov 16 21:02 part4test.c
+-rw-r--r--  1 root  wheel  2605 Nov 16 15:58 cipher.c
+-rw-r--r--  1 root  wheel  2452 Nov 16 00:21 part4.txt
+-rwxr-xr-x  1 root  wheel  8546 Nov 16 00:20 part4test
+-rwxr-xr-x  1 root  wheel  8546 Nov 16 00:14 test
+-rw-r--r--  1 root  wheel  1841 Nov 16 00:07 output.txt
+-rwxr-xr-x  1 root  wheel  8546 Nov 16 00:06 a.out
+drwx------  2 root  wheel   512 Nov 15 23:47 .vnc
+-rw-------  1 root  wheel   333 Nov 15 23:47 .Xauthority
+-rwxr-xr-x  1 root  wheel  6782 Nov 15 20:46 cipher
+-rw-r--r--  1 root  wheel   693 Nov 15 20:45 kerntest.c
+-rwxr-xr-x  1 root  wheel  6536 Nov 15 16:39 kerntest
+drwx------  2 root  wheel   512 Jun  9  2006 .ssh
+-rwxr-xr-x  1 root  wheel    67 Jun  9  2006 vncup800
+-rwxr-xr-x  1 root  wheel    68 Jun  9  2006 vncup1024
+-rwxr-xr-x  1 root  wheel    69 Jun  9  2006 vncup1280
+-rw-r--r--  1 root  wheel   633 Jun  9  2006 .fonts.cache-1
+drwxr-xr-x  3 root  wheel   512 Jun  9  2006 .emacs.d
+-rw-r--r--  1 root  wheel   482 Jun  9  2006 .emacs
+-rw-r--r--  2 root  wheel   769 Jun  9  2006 .cshrc
+-rw-r--r--  2 root  wheel   267 Jun  9  2006 .profile
+-rw-------  1 root  wheel   125 Mar 29  2004 .klogin
+-rw-r--r--  1 root  wheel   335 Mar 29  2004 .login
+# 
+# 
+# ./par     # ./part4                                                                      # ./part4 t        # ./part4test                                                                  # ./part4test 
+Here is the length of my encrypted message: 110
+Here is my encrypted message: 
+lvwKv  lWhd  IvW prUFRb 15s9vl5 OhpSbv vOOfdxp QU Eh6.74hU kdUh vrh  rphhUWKKd ffWUdv hUU IrlvWKhv W !W: :*$.)
+
+Here is the length of my encrypted message: 110
+Here is my decrypted message: 
+This is a test for my COP4600 simple syscall number 291. Here are some other characters for this test: !*$ :).
+
+Here is an example of truncation:
+Here is the length of my super long string:
+1248
+Here is the length of my super long string after decryption (without the null terminator):
+1024
+Here is the decrypted string: 
+ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+# 
+# 
+# ls -lt /
+total 20080
+drwx------   5 root  wheel      512 Nov 16 00:21 root
+drwxrwxrwt   4 root  wheel      512 Nov 16 00:20 tmp
+drwxr-xr-x   3 root  wheel    19968 Nov 15 23:46 dev
+-rwxr-xr-x   1 root  wsrc   5076662 Nov 15 23:46 bsd
+drwxr-xr-x  18 root  wheel     2048 May 20  2008 etc
+-rw-r--r--   2 root  wheel      769 Jun  9  2006 .cshrc
+-rw-r--r--   2 root  wheel      267 Jun  9  2006 .profile
+-rw-r--r--   1 root  wheel  5075323 Jul  7  2005 bsd.0
+-rw-r--r--   1 root  wheel    42132 Jul 18  2004 boot
+lrwxr-xr-x   1 root  wheel       11 Jul 18  2004 sys -> usr/src/sys
+drwxr-xr-x   2 root  wheel     2048 Mar 29  2004 sbin
+drwxr-xr-x   2 root  wheel     1024 Mar 29  2004 bin
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 altroot
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 home
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 mnt
+drwxr-xr-x   2 root  wheel      512 Mar 29  2004 stand
+drwxr-xr-x  22 root  wheel      512 May 16  2003 var
+drwxr-xr-x  16 root  wheel      512 May 16  2003 usr
+# 
+# 
+# dmesg | head
+2
+fd0 at fdc0 drive 0: 1.44MB 80 cyl, 2 head, 18 sec
+biomask 4a40 netmask 4e40 ttymask 5ec2
+pctr: 686-class user-level performance counters enabled
+mtrr: Pentium Pro MTRR support
+dkcsum: sd0 matched BIOS disk 80
+dkcsum: sd1 matched BIOS disk 81
+root on sd0a
+rootdev=0x400 rrootdev=0xd00 rawdev=0xd02
+syncing disks... done
+# 
+# 
+# # 
