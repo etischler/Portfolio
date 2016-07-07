@@ -61,6 +61,10 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="ChallengeButtonOutlet" destination="9Bo-84-Sul" id="pFb-XY-JfF"/>
+                        <outlet property="PendingChallengesOutlet" destination="tk1-gQ-zM5" id="Ehd-6l-cfc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

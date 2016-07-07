@@ -1,5 +1,5 @@
 //
-//  LoginPage.swift
+//  NewesLoginPage.swift
 //  Odds?!
 //
 //  Created by Edward Tischler on 7/7/16.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class LoginPage: UIViewController, FBSDKLoginButtonDelegate {
+class NewesLoginPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello fuckboi")
-        
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
+            //print("user already loggin in -ed")
+            FBSDKLoginManager().logOut()
         }
         else
         {
@@ -24,10 +24,14 @@ class LoginPage: UIViewController, FBSDKLoginButtonDelegate {
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
+            //loginView.delegate = self
         }
-
         // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -52,11 +56,28 @@ class LoginPage: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
+        FBSDKLoginManager().logOut()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func returnUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                let userName : NSString = result.valueForKey("name") as! NSString
+                print("User Name is: \(userName)")
+                let userEmail : NSString = result.valueForKey("email") as! NSString
+                print("User Email is: \(userEmail)")
+            }
+        })
     }
     
 

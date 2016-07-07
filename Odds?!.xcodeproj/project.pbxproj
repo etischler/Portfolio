@@ -9,25 +9,26 @@
 /* Begin PBXBuildFile section */
 		2B0AF1311D21A53D0056DBE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0AF1301D21A53D0056DBE0 /* AppDelegate.swift */; };
 		2B0AF1331D21A53D0056DBE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0AF1321D21A53D0056DBE0 /* ViewController.swift */; };
-		2B0AF1361D21A53D0056DBE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B0AF1341D21A53D0056DBE0 /* Main.storyboard */; };
 		2B0AF1381D21A53D0056DBE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B0AF1371D21A53D0056DBE0 /* Assets.xcassets */; };
 		2BE90B121D2ED45700B80F51 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE90B0F1D2ED45700B80F51 /* FBSDKCoreKit.framework */; };
 		2BE90B131D2ED45700B80F51 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE90B101D2ED45700B80F51 /* FBSDKLoginKit.framework */; };
 		2BE90B141D2ED45700B80F51 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE90B111D2ED45700B80F51 /* FBSDKShareKit.framework */; };
+		2BE90B191D2ED8EE00B80F51 /* NewesLoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE90B181D2ED8EE00B80F51 /* NewesLoginPage.swift */; };
+		2BE90B1C1D2EFAED00B80F51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE90B1A1D2EFAED00B80F51 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2B0AF12D1D21A53D0056DBE0 /* Odds?!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Odds?!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B0AF1301D21A53D0056DBE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B0AF1321D21A53D0056DBE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2B0AF1351D21A53D0056DBE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B0AF1371D21A53D0056DBE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B0AF13C1D21A53D0056DBE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE90AEA1D2D527100B80F51 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
-		2BE90B071D2EB35B00B80F51 /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
 		2BE90B0F1D2ED45700B80F51 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		2BE90B101D2ED45700B80F51 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		2BE90B111D2ED45700B80F51 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		2BE90B181D2ED8EE00B80F51 /* NewesLoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewesLoginPage.swift; sourceTree = "<group>"; };
+		2BE90B1B1D2EFAED00B80F51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,12 +68,12 @@
 			isa = PBXGroup;
 			children = (
 				2B0AF1301D21A53D0056DBE0 /* AppDelegate.swift */,
-				2BE90B071D2EB35B00B80F51 /* LoginPage.swift */,
 				2B0AF1321D21A53D0056DBE0 /* ViewController.swift */,
-				2B0AF1341D21A53D0056DBE0 /* Main.storyboard */,
 				2BE90AEA1D2D527100B80F51 /* ObjCBridge.h */,
 				2B0AF1371D21A53D0056DBE0 /* Assets.xcassets */,
+				2BE90B1A1D2EFAED00B80F51 /* Main.storyboard */,
 				2B0AF13C1D21A53D0056DBE0 /* Info.plist */,
+				2BE90B181D2ED8EE00B80F51 /* NewesLoginPage.swift */,
 			);
 			path = "Odds?!";
 			sourceTree = "<group>";
@@ -137,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B0AF1381D21A53D0056DBE0 /* Assets.xcassets in Resources */,
-				2B0AF1361D21A53D0056DBE0 /* Main.storyboard in Resources */,
+				2BE90B1C1D2EFAED00B80F51 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B0AF1331D21A53D0056DBE0 /* ViewController.swift in Sources */,
+				2BE90B191D2ED8EE00B80F51 /* NewesLoginPage.swift in Sources */,
 				2B0AF1311D21A53D0056DBE0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,10 +158,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2B0AF1341D21A53D0056DBE0 /* Main.storyboard */ = {
+		2BE90B1A1D2EFAED00B80F51 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2B0AF1351D21A53D0056DBE0 /* Base */,
+				2BE90B1B1D2EFAED00B80F51 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
