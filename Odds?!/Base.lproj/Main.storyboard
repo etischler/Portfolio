@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="Odds__" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-The guessing based dare game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIa-k3-N84">
+                                <rect key="frame" x="71" y="122" width="233.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a lable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvT-mL-sLn">
+                                <rect key="frame" x="115" y="319" width="145" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tk1-gQ-zM5">
+                                <rect key="frame" x="85" y="353" width="205" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Pending Challenges"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Bo-84-Sul">
+                                <rect key="frame" x="91" y="274" width="192" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Challenge a Friend"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Odds?!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfj-02-Jtl">
+                                <rect key="frame" x="36" y="70" width="303.5" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tk1-gQ-zM5" firstAttribute="top" secondItem="qvT-mL-sLn" secondAttribute="bottom" constant="5" id="2iZ-ty-qQz"/>
+                            <constraint firstItem="dfj-02-Jtl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="A7S-0j-BpK"/>
+                            <constraint firstItem="qvT-mL-sLn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="D6a-0T-jho"/>
+                            <constraint firstItem="tk1-gQ-zM5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VQh-ki-szg"/>
+                            <constraint firstItem="zIa-k3-N84" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X00-c5-84F"/>
+                            <constraint firstItem="qvT-mL-sLn" firstAttribute="top" secondItem="9Bo-84-Sul" secondAttribute="bottom" constant="5" id="Xk8-Bv-3Oh"/>
+                            <constraint firstItem="9Bo-84-Sul" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a6h-4r-1JA"/>
+                            <constraint firstItem="dfj-02-Jtl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ep1-Ww-C7q"/>
+                            <constraint firstItem="qvT-mL-sLn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kJa-0f-Ife"/>
+                            <constraint firstItem="zIa-k3-N84" firstAttribute="top" secondItem="dfj-02-Jtl" secondAttribute="bottom" constant="10" id="oH3-aD-OeK"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-40.5" y="155.5"/>
+        </scene>
+    </scenes>
+</document>
